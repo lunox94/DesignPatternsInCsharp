@@ -75,7 +75,7 @@ public class SchoolTableSpecification : Specification<Table>
         new TableTypeSpecification(type: "Scholar");
 
     private readonly ISpecification<Table> _largeSizeTableSpecification =
-        new TableSizeSpecification(size: "large");
+        new TableSizeSpecification(size: "Large");
 
     public override bool IsSatisfiedBy(Table entity)
     {
