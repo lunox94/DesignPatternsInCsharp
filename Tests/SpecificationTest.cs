@@ -1,6 +1,7 @@
+using DesignPatternsInCsharp.Specification;
 using Xunit;
 
-namespace DesignPatternsInCsharp.Specification;
+namespace Tests;
 
 public class SpecificationTest
 {
