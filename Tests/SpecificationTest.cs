@@ -5,12 +5,15 @@ namespace Tests;
 
 public class SpecificationTest
 {
-    [Fact]
-    public void SpecificationIsSatisfiedBySubject()
+    [Theory]
+    [InlineData(4, "Wood", "Scholar", "Small")]
+    [InlineData(4, "Wood", "Scholar", "Medium")]
+    [InlineData(4, "Plastic", "Scholar", "Medium")]
+    public void SpecificationIsSatisfiedBySubject(int legs, string material,
+        string type, string size)
     {
         // arrange
-        var table = new Table(
-            legs: 4, material: "Wood", type: "Scholar", size: "Medium");
+        var table = new Table(legs, material, type, size);
 
         var sut = new SchoolTableSpecification();
 
@@ -20,13 +23,18 @@ public class SpecificationTest
         // assert
         Assert.True(result);
     }
-    
-    [Fact]
-    public void SpecificationIsNotSatisfiedBySubject()
+
+    [Theory]
+    [InlineData(4, "Wood", "Scholar", "Large")]
+    [InlineData(3, "Wood", "Scholar", "Large")]
+    [InlineData(4, "Plastic", "Workbench", "Medium")]
+    [InlineData(4, "Glass", "Scholar", "Medium")]
+    public void SpecificationIsNotSatisfiedBySubject(int legs, string material,
+        string type, string size)
     {
         // arrange
         var table = new Table(
-            legs: 4, material: "Wood", type: "Scholar", size: "Large");
+            legs, material, type, size);
 
         var sut = new SchoolTableSpecification();
 
